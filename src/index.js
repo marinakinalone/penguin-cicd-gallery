@@ -1,13 +1,11 @@
 import './style.scss';
 
-import getPictures from './api';
+const getPictures = require('./api');
 
 const state = {
   value: '',
   pictures: [],
 };
-
-// let count = window.history.state?.count || 0;
 
 const template = s => {
   if (s) {
@@ -33,7 +31,7 @@ const render = (htmlString, el) => {
 const update = newState => {
   window.history.pushState(
     { ...state, ...newState }, '',
-  ); // patch state, overwrite old data with new properties
+  );
   window.dispatchEvent(new Event('statechange'));
 };
 
@@ -44,7 +42,6 @@ input.addEventListener('search', async () => {
   const newState = {
     value: input.value,
     pictures: [...response.results],
-    // count: ++count,
   };
   update(newState);
 });
@@ -54,3 +51,5 @@ window.addEventListener('statechange', () => {
 });
 
 render(template(window.history.state), document.querySelector('#gallery'));
+
+module.exports.update = update;

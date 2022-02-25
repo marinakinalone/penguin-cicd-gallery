@@ -98,7 +98,7 @@ $inconsolata: 'inconsolata', monospace;
 .flip-card-back {
   background-color: $gray;
   color: rgb(0, 0, 0);
-  padding-top: 15rem;
+  padding: 15rem 2rem 2rem 2rem;
   font-size: 2rem;
   transform: rotateY(180deg);
 }
